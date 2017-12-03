@@ -1,15 +1,29 @@
 package org.darktower.mavenjavafxapp;
 
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import org.darktower.mavenjavafxapp.controller.MainController;
 
 public class MainApp extends Application {
 
     private Stage primaryStage;
+    private BorderPane rootLayout;
+    private ObservableList<Person> personData = FXCollections.observableArrayList();
+
+    public MainApp(){
+        //personData.add(new Person("Patrick"));
+    }
+
+    public ObservableList<Person> getPersonData() {
+        return personData;
+    }
 
     private void setPrimaryStage(Stage primaryStage) {
         this.primaryStage = primaryStage;
@@ -45,14 +59,20 @@ public class MainApp extends Application {
     }
 
     //Загружаем сцену инициативы, вместо сцены входа в систему
-    public void loadInitiativeView() throws Exception{
+    public void initRootLayout() throws Exception{
+        String fxmlFile = "/fxml/RootLayout.fxml";
+        FXMLLoader loader = new FXMLLoader();
+        rootLayout = loader.load(getClass().getResourceAsStream(fxmlFile));
+        primaryStage.setTitle("Root Layout");
+        primaryStage.setScene(new Scene(rootLayout));
+        primaryStage.show();
+    }
+
+    public void showInitiativeView() throws Exception{
         String fxmlFile = "/fxml/InitiativeView.fxml";
         FXMLLoader loader = new FXMLLoader();
-        Parent root = loader.load(getClass().getResourceAsStream(fxmlFile));
-
-        primaryStage.setTitle("Initiative Desktop");
-        primaryStage.setScene(new Scene(root));
-        primaryStage.show();
+        AnchorPane initiativeView = loader.load(getClass().getResourceAsStream(fxmlFile));
+        rootLayout.setCenter(initiativeView);
     }
 
 }

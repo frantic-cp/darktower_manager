@@ -23,16 +23,17 @@ public class MainController {
     }
 
     @FXML protected void handleSubmitButtonAction(ActionEvent actionEvent) {
-        if(login.equals(loginField.getText())){
+        if(login.equals(loginField.getText())
+           && password.equals(passwordField.getText())){
             actiontarget.setText("Complete");
             try {
-                mainApp.loadInitiativeView();
+                mainApp.initRootLayout();
+                mainApp.showInitiativeView();
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
         }else{
-            actiontarget.setText("Wrong login");
+            actiontarget.setText("Wrong login & password");
         }
     }
 }
