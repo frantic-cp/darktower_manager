@@ -16,6 +16,7 @@
               <MenuItem mnemonicParsing="false" text="Close" />
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
+              <MenuItem mnemonicParsing="false" text="Create Person" onAction="#handleCreatePerson"/>
               <MenuItem mnemonicParsing="false" text="Delete" />
           </Menu>
           <Menu mnemonicParsing="false" text="Help">

@@ -3,6 +3,8 @@ package org.darktower.mavenjavafxapp;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.StringProperty;
 
+import java.util.ArrayList;
+
 public class Person {
     private StringProperty name;
     private IntegerProperty initiative;
@@ -13,6 +15,8 @@ public class Person {
     private IntegerProperty perception;
     private IntegerProperty charisma;
     private IntegerProperty willpower;
+    private ArrayList<Skill> skills;
+    private ArrayList<Feature> features;
 
     Person(String name){
         this.name.set(name);
@@ -125,4 +129,21 @@ public class Person {
     public void setWillpower(int willpower) {
         this.willpower.set(willpower);
     }
+
+    public ArrayList<Feature> getFeatures() {
+        return features;
+    }
+
+    public void setFeatures(ArrayList<Feature> features) {
+        this.features = features;
+    }
+
+    public ArrayList<Skill> getSkillArrayList() {
+        return skills;
+    }
+
+    public void setSkills(ArrayList<Skill> skills) {
+        this.skills = skills;
+    }
+
 }
